@@ -1,0 +1,195 @@
+# ===================== 基本参数 =====================
+report:
+  start_date: "2020-01-09"  # 默认起始日期
+  file_prefix: "周报"       # 输出文件前缀
+  output_time_format: "%Y%m%d_%H%M%S"  # 输出文件时间戳格式
+
+# 筛选国家列表
+filter_countrylist:
+  - 东南亚
+  - 其他国家
+  - 德法英
+  - 日本
+  - 欧盟加澳
+  - 海湾六国
+  - 港澳台
+  - 美国
+  - 韩国
+
+countrylist:
+  - 美国
+  - 港澳台
+
+# KPI 指标，用于条件格式匹配
+target_value:
+  - W0
+  - W1
+  - W47
+  - D000_ROAS
+  - D007_ROAS
+  - D180_ROAS
+  - D001/D000
+  - D014/D000
+  - D180/D030
+  - D001留存
+  - D007留存
+  - D180留存
+  - 有效登录比
+  - 一阶登陆比
+  - 二阶登陆比
+  - D000累计付费率
+  - D007累计付费率
+  - D030累计付费率
+  - D000累计复购率
+  - D007累计复购率
+  - D030累计复购率
+  - D001付费留存
+  - D007付费留存
+  - D180付费留存
+  - W01付费留存
+  - W06付费留存
+  - W16付费留存
+  - W00付费天数
+  - W01付费天数
+  - W16付费天数
+  - W01_PayPay
+  - W06_PayPay
+  - W16_PayPay
+  - W00_ARPPU
+  - W06_ARPPU
+  - W16_ARPPU
+  - D000_IAP_LTV
+  - D007_IAP_LTV
+  - D120_IAP_LTV
+  - W00_IAP_LTV
+  - W06_IAP_LTV
+  - W16_IAP_LTV
+
+# ===================== Excel 样式 =====================
+excel_style:
+
+  fonts:
+    default: "MiSans Medium"
+    header_size: 12
+    bold: true
+
+  formats:
+    int_format:
+      num_format: "0"
+      align: "center"
+      valign: "vcenter"
+
+    decimal_format:
+      num_format: "0.00"
+      align: "center"
+      valign: "vcenter"
+
+    money_format:
+      num_format: "$0.00"
+      align: "center"
+      valign: "vcenter"
+
+    percent_format:
+      num_format: "0.00%"
+      align: "center"
+      valign: "vcenter"
+
+    header_format:
+      bold: true
+      font_size: 12
+      bg_color: "#DDEBF7"
+      align: "center"
+      valign: "vcenter"
+
+    top_percent_format:
+      num_format: "0.00%"
+      top: 2
+      font_name: "MiSans Medium"
+      align: "center"
+      valign: "vcenter"
+
+    top_decimal_format:
+      num_format: "0.00"
+      top: 2
+      font_name: "MiSans Medium"
+      align: "center"
+      valign: "vcenter"
+
+    top_money_format:
+      num_format: "$0.00"
+      top: 2
+      font_name: "MiSans Medium"
+      align: "center"
+      valign: "vcenter"
+
+    top_int_format:
+      num_format: "0"
+      top: 2
+      font_name: "MiSans Medium"
+      align: "center"
+      valign: "vcenter"
+
+    bold_left_format:
+      bold: true
+      font_size: 12
+      font_name: "MiSans Medium"
+      align: "left"
+      valign: "vcenter"
+      bg_color: "#DDEBF7"
+
+    bold_centered_format:
+      bold: true
+      font_size: 12
+      font_name: "MiSans Medium"
+      align: "center"
+      valign: "vcenter"
+
+    centered_format:
+      align: "center"
+      font_name: "MiSans Medium"
+      valign: "vcenter"
+
+  color_scales:
+    csr_1:
+      type: "3_color_scale"
+      min_value: 0.01
+      min_color: "#F8696B"
+      mid_color: "#FFEB84"
+      max_color: "#63BE7B"
+
+    csr_11:
+      type: "3_color_scale"
+      min_value: 0.01
+      min_color: "#63BE7B"
+      mid_color: "#FFEB84"
+      max_color: "#F8696B"
+
+    csr_3:
+      type: "3_color_scale"
+      min_color: "#5A8AC6"
+      mid_color: "#FFFFFF"
+      max_color: "#FF6B6B"
+
+  data_bars:
+    dbf_1:
+      type: "data_bar"
+      bar_color: "#70AD47"
+    dbf_2:
+      type: "data_bar"
+      bar_color: "#FFC000"
+    dbf_3:
+      type: "data_bar"
+      bar_color: "#4F81BD"
+    default:
+      type: "data_bar"
+      bar_color: "#FFA07A"
+
+  borders:
+    top_border:
+      top: 2
+    bottom_border:
+      bottom: 2
+    left_border:
+      left: 2
+    right_border:
+      right: 2
