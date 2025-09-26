@@ -200,29 +200,9 @@ def generate_weekly_report(csv_path: str, output_dir: str, start_date: str = "20
                     num_loc += 1
 
         messagebox.showinfo("✅ 完成", f"周报生成成功：{outpath}")
+        return outpath
 
     except Exception as e:
         messagebox.showerror("❌ 错误", str(e))
+        return None
 
-# ===================== GUI 主程序 =====================
-def main():
-    root = tk.Tk()
-    root.title("WeeklyReport_BasicSheets")
-    root.geometry("400x400")
-
-    tk.Label(root, text="请选择原始 CSV 数据文件").pack(pady=10)
-    csv_path_var = tk.StringVar()
-    tk.Entry(root, textvariable=csv_path_var, width=50).pack()
-    tk.Button(root, text="选择文件", command=lambda: csv_path_var.set(filedialog.askopenfilename(filetypes=[('CSV 文件', '*.csv')]))).pack(pady=5)
-
-    tk.Label(root, text="请选择输出文件夹").pack(pady=10)
-    out_folder_var = tk.StringVar()
-    tk.Entry(root, textvariable=out_folder_var, width=50).pack()
-    tk.Button(root, text="选择文件夹", command=lambda: out_folder_var.set(filedialog.askdirectory())).pack(pady=5)
-
-    tk.Button(root, text="生成周报基础表格", command=lambda: generate_weekly_report(csv_path_var.get(), out_folder_var.get())).pack(pady=20)
-
-    root.mainloop()
-
-if __name__ == "__main__":
-    main()
