@@ -3,23 +3,10 @@ from openai import OpenAI
 import chromadb  # 作为知识库
 from typing import Any, Dict
 
-# --------------------
-# Step 1: 读取原始数据
-# --------------------
-def load_raw_data(file_path: str) -> pd.DataFrame:
-    df = pd.read_csv(file_path)  # 或者 pd.read_excel / 数据库连接
-    return df
+from Excel_Convert import generate_weekly_report
 
 # --------------------
-# Step 2: 预处理函数
-# --------------------
-def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
-    # TODO: 替换成你的处理逻辑
-    df_clean = df.dropna().copy()
-    return df_clean
-
-# --------------------
-# Step 3: 构建知识库
+# 构建知识库
 # --------------------
 class KnowledgeBase:
     def __init__(self, persist_dir: str = "./chroma_store"):
@@ -34,7 +21,7 @@ class KnowledgeBase:
         return results["documents"][0]
 
 # --------------------
-# Step 4: 调用大语言模型
+# 调用大语言模型
 # --------------------
 class LLMAnalyzer:
     def __init__(self, api_key: str):
@@ -42,14 +29,14 @@ class LLMAnalyzer:
 
     def analyze(self, table_summary: str, kb_context: str = "") -> str:
         prompt = f"""
-你是一个数据分析专家。下面是数据表的摘要：
-{table_summary}
-
-以下是过往的参考分析：
-{kb_context}
-
-请生成一份包含表格解读、关键发现和结论的分析报告，报告要结构化且简洁。
-"""
+            你是一个数据分析专家。下面是数据表的摘要：
+            {table_summary}
+            
+            以下是过往的参考分析：
+            {kb_context}
+            
+            请生成一份包含表格解读、关键发现和结论的分析报告，报告要结构化且简洁。
+            """
         response = self.client.chat.completions.create(
             model="gpt-4o-mini",  # 可以换成你有权限的模型
             messages=[{"role": "user", "content": prompt}],
@@ -65,7 +52,7 @@ def main(file_path: str, api_key: str):
     raw_df = load_raw_data(file_path)
 
     # 2. 预处理
-    processed_df = preprocess_data(raw_df)
+    processed_df = generate_weekly_report(raw_df)
 
     # 3. 获取表格摘要（可截取前几行 + 描述统计）
     summary = processed_df.head(10).to_markdown() + "\n\n" + str(processed_df.describe())
